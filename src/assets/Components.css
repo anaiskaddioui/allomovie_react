@@ -1,0 +1,25 @@
+.navbar {
+    background-color: #ffcc00
+    ;
+}
+
+.card {
+    max-width: 540px;
+}
+
+.blocOverview {
+
+    z-index: 999;
+    width: 300%;
+    position: absolute;
+    top: -15em;
+    left: -8em;
+    background-color: whitesmoke;
+    border : 5px #30cfc0 solid !important;
+    box-shadow: gray 0.5px 0.5px 30px !important;
+}
+
+.titre {
+
+    margin-bottom : 1em;
+}
