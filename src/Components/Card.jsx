@@ -1,4 +1,4 @@
-import { MDBBtn, MDBCard } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBIcon } from 'mdbreact';
 import React, { Component } from 'react';
 import './../assets/Components.css';
 import DetailMovie from './DetailMovie';
@@ -10,9 +10,15 @@ class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //getMovie: this.props.getMovie,
-            showOverview : false
+            showOverview : false,
         }
+    }
+
+    hideContent = () => {
+
+        this.setState({
+            showOverview: false
+        })
     }
 
     handleClick = () => {
@@ -52,7 +58,7 @@ class Card extends Component {
             {this.state.showOverview && (
 
                 <MDBCard className="blocOverview">
-
+                    <MDBIcon icon="window-close" style={{ position: 'absolute', top: 10, right: 10, cursor: 'pointer' }} onClick={ this.hideContent } title='Fermer'/>
                     <DetailMovie 
                         title = {this.props.title}
                         overviewUp = {this.props.overview}

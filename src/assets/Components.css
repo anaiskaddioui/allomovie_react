@@ -14,7 +14,8 @@
     position: absolute;
     top: -15em;
     left: -8em;
-    background-color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.81);
+    color: whitesmoke;
     border : 5px #30cfc0 solid !important;
     box-shadow: gray 0.5px 0.5px 30px !important;
 }

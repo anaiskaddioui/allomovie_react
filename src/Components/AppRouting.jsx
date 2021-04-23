@@ -12,6 +12,7 @@ class AppRouting  extends Component {
     return (
       <div>
         <BrowserRouter>
+        
             <Navbar />
             <Search />
             <Routes />
