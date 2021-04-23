@@ -32,7 +32,7 @@ class Card extends Component {
     fixZindex = () => {
 
         this.setState({
-            zIndex: this.state.zIndex + 1 
+            zIndex: this.state.zIndex + 3 
         })
     }
     
