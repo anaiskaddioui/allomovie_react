@@ -35,6 +35,20 @@ class Search extends Component {
         }
     }
 
+    componentDidMount() {
+        ApiMovie.get('discover/movie')
+            .then(response => {
+                console.log(response)
+                this.setState({ 
+
+                    movies: response.data.results
+                    
+                });
+                 
+                
+            })
+    }
+
     submit = (values) => {
         const query = '?' + Object.keys(values)
             .map( key => key + '=' + values[key] + '&')
@@ -67,13 +81,6 @@ class Search extends Component {
 
             <div className="form">
 
-                <div>
-                {this.state.movies.map((movie, key) => (
-                    <div key = {key} value={movie.title}>{movie.title}</div>
-
-                ))}
-                </div>
-
                 <Formik
                     initialValues={ { query: '', language: 'fr-FR' } }  
                     onSubmit={this.submit}
@@ -88,7 +95,7 @@ class Search extends Component {
                         <div className="row p-0">
                             <div className="col-7">
 
-                            <div className="form-inline active-cyan-3 active-cyan-4">
+                            <div className="form-inline active-cyan-3 active-cyan-4" style={{ color: 'whitesmoke' }}>
                                 <i className="fas fa-search"></i>
                                 <input
                                     list="movies" 
@@ -96,13 +103,16 @@ class Search extends Component {
                                     type="text" 
                                     placeholder="Search..."
                                     aria-label="Search"
+                                    style={{ color: 'whitesmoke' }}
                                     onChange = { handleChange } 
                                     onBlur = { handleBlur }
                                     />
 
-                                <datalist id="movies">
+                                <datalist id="movies"> 
                                     
-                                   
+                                    {this.state.movies.map((movie, key) => (
+                                        <option key={key} value={movie.title}></option> 
+                                    ))}
                                        
                                 </datalist>
                             </div>

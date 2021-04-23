@@ -11,6 +11,7 @@ class Card extends Component {
         super(props);
         this.state = {
             showOverview : false,
+            zIndex: 998
         }
     }
 
@@ -28,6 +29,12 @@ class Card extends Component {
         })
     }
 
+    fixZindex = () => {
+
+        this.setState({
+            zIndex: this.state.zIndex + 1 
+        })
+    }
     
     render() {
         
@@ -57,7 +64,7 @@ class Card extends Component {
 
             {this.state.showOverview && (
 
-                <MDBCard className="blocOverview">
+                <MDBCard className="blocOverview" style={{ zIndex: this.state.zIndex }} onClick= { this.fixZindex }>
                     <MDBIcon icon="window-close" style={{ position: 'absolute', top: 10, right: 10, cursor: 'pointer' }} onClick={ this.hideContent } title='Close'/>
                     <DetailMovie 
                         title = {this.props.title}

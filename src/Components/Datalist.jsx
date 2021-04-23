@@ -10,20 +10,6 @@ class Datalist extends Component {
         }
     }
 
-    
-    componentDidMount() {
-        ApiMovie.get('discover/movie')
-            .then(response => {
-                console.log(response)
-                this.setState({ 
-
-                    movies: response.data.results
-                    
-                });
-                 
-                
-            })
-    }
 
     render() {
 
