@@ -23,3 +23,8 @@
 
     margin-bottom : 1em;
 }
+
+input[list], datalist option
+{
+  background: black;
+}

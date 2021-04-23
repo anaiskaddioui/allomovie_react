@@ -1,10 +1,8 @@
-import { ErrorMessage, Field, FieldArray, Form, Formik, isInputEvent } from 'formik';
-import { MDBInput } from 'mdbreact';
+import { ErrorMessage, Form, Formik } from 'formik';
 import React, { Component } from 'react';
 import * as yup from 'yup';
 import ApiMovie, { movieList } from './../../api-back/ApiMovie';
-import Datalist from './../Datalist';
-
+import './../../assets/Components.css';
 
 
 
@@ -38,14 +36,11 @@ class Search extends Component {
     componentDidMount() {
         ApiMovie.get('discover/movie')
             .then(response => {
-                console.log(response)
                 this.setState({ 
 
                     movies: response.data.results
                     
-                });
-                 
-                
+                });               
             })
     }
 
@@ -60,11 +55,7 @@ class Search extends Component {
                 this.setState({
                     movies : response.data.results
                 })})
-            .then( moviesApi => {
-                const movies = moviesApi.map(movieList);
-                this.props.updateMovies(movies);
-
-            })
+            
             . catch( err => console.log(err));
         
 
@@ -89,33 +80,33 @@ class Search extends Component {
 
 
                     {({ handleSubmit, handleChange, handleBlur, isSubmitting }) => (
-                    <Form className="shadow container-fluid" onSubmit={ handleSubmit }>
+                    <Form className="shadow container-fluid" onSubmit={ this.submit }>
 
 
                         <div className="row p-0">
                             <div className="col-7">
 
-                            <div className="form-inline active-cyan-3 active-cyan-4" style={{ color: 'whitesmoke' }}>
-                                <i className="fas fa-search"></i>
-                                <input
-                                    list="movies" 
-                                    className="form-control form-control-sm ml-3 w-75" 
-                                    type="text" 
-                                    placeholder="Search..."
-                                    aria-label="Search"
-                                    style={{ color: 'whitesmoke' }}
-                                    onChange = { handleChange } 
-                                    onBlur = { handleBlur }
-                                    />
+                                <div className="form-inline active-cyan-3 active-cyan-4" style={{ color: 'whitesmoke' }}>
+                                    <i className="fas fa-search"></i>
+                                    <input
+                                        list="movies" 
+                                        className="form-control ml-3 w-75 col-sm-6 custom-select" 
+                                        type="text" 
+                                        placeholder="Search..."
+                                        aria-label="Search"
+                                        style={{ color: 'whitesmoke' }}
+                                        //onChange = { handleChange } 
+                                        //onBlur = { handleBlur }
+                                        />
 
-                                <datalist id="movies"> 
-                                    
-                                    {this.state.movies.map((movie, key) => (
-                                        <option key={key} value={movie.title}></option> 
-                                    ))}
-                                       
-                                </datalist>
-                            </div>
+                                    <datalist id="movies"> 
+                                        
+                                        {this.state.movies.map((movie, key) => (
+                                            <option key={key} value={movie.title}></option> 
+                                        ))}
+                                        
+                                    </datalist>
+                                </div>
 
 
                                 <ErrorMessage component="small" name="search" className="text-danger" />
@@ -125,8 +116,8 @@ class Search extends Component {
                             <div className="col-3 mt-4">
 
                                 <select className="browser-default custom-select" 
-                                        onChange = { handleChange } 
-                                        onBlur = { handleBlur }
+                                        //onChange = { handleChange } 
+                                        //onBlur = { handleBlur }
                                 >
                                     <option defaultValue value="English">English</option>
                                     <option value="Français">Français</option>
