@@ -54,7 +54,7 @@ class Card extends Component {
                       className="btn btn-info mx-5 mb-3"
                       onClick={this.handleClick}
                 >
-                {this.state.showOverview ? (<span>Close</span>) : (<span>Overview</span>)}
+                {this.state.showOverview ? (<span>Fermer</span>) : (<span>Résumé</span>)}
                 </MDBBtn>
 
                
@@ -65,7 +65,7 @@ class Card extends Component {
             {this.state.showOverview && (
 
                 <MDBCard className="blocOverview" style={{ zIndex: this.state.zIndex }} onClick= { this.fixZindex }>
-                    <MDBIcon icon="window-close" style={{ position: 'absolute', top: 10, right: 10, cursor: 'pointer' }} onClick={ this.hideContent } title='Close'/>
+                    <MDBIcon icon="window-close" style={{ position: 'absolute', top: 10, right: 10, cursor: 'pointer' }} onClick={ this.hideContent } title='Fermer'/>
                     <DetailMovie 
                         title = {this.props.title}
                         overviewUp = {this.props.overview}
