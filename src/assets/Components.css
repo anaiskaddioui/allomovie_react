@@ -3,6 +3,13 @@
     ;
 }
 
+.navbar-toggler-icon {
+
+    background-color:rgba(0, 0, 0, 0.91) !important;
+    color: whitesmoke !important;
+    border-radius: 2px;   
+}
+
 .card {
     max-width: 540px;
 }
@@ -16,7 +23,7 @@
     background-color: rgba(0, 0, 0, 0.91);
     color: whitesmoke;
     border : 5px #30cfc0 solid !important;
-    box-shadow: gray 0.15px 0.15px 30px !important;
+    box-shadow: gray 0.05px 0.05px 10px !important;
 }
 
 .titre {

@@ -21,7 +21,7 @@ class Routes extends Component {
                     <Route path='/favoris' component= { Favoris } />
                     <Route path='/detail' component= { DetailMovie } />
                     <Route path='/movie/:id?' component= { AppMovie }/>
-                    <Route path='/renderone' component={RenderOneMovie} />
+                    <Route path='/renderone/:id?' component={RenderOneMovie} />
                     <Route component= { Error404 } />
                 </Switch>
                 

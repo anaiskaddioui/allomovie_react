@@ -1,8 +1,11 @@
+import { Redirect, withRouter } from 'react-router-dom';
+
 import { ErrorMessage, Form, Formik } from 'formik';
 import React, { Component } from 'react';
 import * as yup from 'yup';
-import ApiMovie, { movieList } from './../../api-back/ApiMovie';
 import './../../assets/Components.css';
+import ApiMovie from './../../api-back/ApiMovie';
+import { MDBBtn, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 
 
 
@@ -29,8 +32,10 @@ class Search extends Component {
         super(props);
         this.state = {
             movies : [],
-            renderOneMovie: false
+            renderOneMovie: false,
         }
+        //this.routeChange = this.routeChange.bind(this);
+
     }
 
     componentDidMount() {
@@ -74,16 +79,21 @@ class Search extends Component {
         let titleChoice = document.querySelector('#titleChoice');
 
         this.state.movies.map((movie) => (
-            titleChoice.value === movie.title && console.log('Le film ' + movie.title + ' existe dans la base')
+            titleChoice.value === movie.title && console.log(movie.id)
         ))
 
         this.setState({
             renderOneMovie: true
         })
 
+        this.routeChange();
+
     }
 
-    
+    routeChange = () => {
+        let path = './../renderone';
+        this.props.history.push(path);
+      }
 
     render() {
 
@@ -91,53 +101,58 @@ class Search extends Component {
         return (
 
 
-            <div className="form">
+            <MDBContainer className="form container-fluid m-auto">
 
                 <Formik
                     initialValues={ initialValues }  
-                    onSubmit={this.submit}
+                    onSubmit={this.handleSubmit}
                     validationSchema = {validationSchema}
                 >
 
 
                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, values }) => (
-                    <Form className="shadow container-fluid" onSubmit={ this.handleSubmit }>
+                    <Form className="shadow" onSubmit={ this.handleSubmit }>
 
 
-                        <div className="row p-0">
-                            <div className="col-7">
+                        <MDBRow className="justify-content-center align-items-center">
+                            <MDBCol className="col-4 w-100">
 
-                                <div className="form-inline active-cyan-3 active-cyan-4" style={{ color: 'whitesmoke' }}>
-                                    <i className="fas fa-search"></i>
-                                    <input
-                                        list="movies" 
-                                        className="form-control ml-3 w-75 col-sm-6 custom-select" 
-                                        type="text" 
-                                        placeholder="Search..."
-                                        aria-label="Search"
-                                        style={{ color: 'whitesmoke' }}
-                                        onChange = { this.handleChange } 
-                                        id = 'titleChoice'
-                                        
-                                        />
+                                <MDBRow className="form-inline active-cyan-3 active-cyan-4" style={{ color: 'whitesmoke' }}>
+                                    <MDBCol className="col-1">
+                                        <i className="fas fa-search"></i>
+                                    </MDBCol>
 
-                                    <datalist id="movies"> 
-                                        
-                                        {this.state.movies.map((movie, key) => (
-                                            <option key={key} value={movie.title}></option> 
-                                        ))}
-                                        
-                                    </datalist>
-                                </div>
+                                    <MDBCol className="w-100">
+                                        <input
+                                            list="movies" 
+                                            className="form-control w-100 custom-select" 
+                                            type="text" 
+                                            placeholder="Search..."
+                                            aria-label="Search"
+                                            style={{ color: 'whitesmoke' }}
+                                            onChange = { this.handleChange } 
+                                            id = 'titleChoice'
+                                            
+                                            />
+
+                                        <datalist id="movies"> 
+                                            
+                                            {this.state.movies.map((movie, key) => (
+                                                <option key={key} value={movie.title}></option> 
+                                            ))}
+                                            
+                                        </datalist>
+                                    </MDBCol>
+                                </MDBRow>
 
 
                                 <ErrorMessage component="small" name="search" className="text-danger" />
 
-                            </div>                        
+                            </MDBCol>                        
 
-                            <div className="col-3 mt-4">
+                            <MDBCol className="col-4 w-100" >
 
-                                <select className="browser-default custom-select" 
+                                <select className="browser-default custom-select w-100" 
                                         //onChange = { handleChange } 
                                         //onBlur = { handleBlur }
                                 >
@@ -146,29 +161,29 @@ class Search extends Component {
                                 </select>
                         
                                 <ErrorMessage component="small" name="language" className="text-danger" />
-                            </div>
+                            </MDBCol>
                   
-                            <div className="col-2">
-                                <button 
+                            <MDBCol className="col-4">
+                                <MDBBtn 
                                     type="submit" 
-                                    className="btn btn-primary w-100 mt-3"
+                                    className="btn btn-primary w-100"
                                     //disabled = { isSubmitting }
                                 >
                                     Submit
-                                </button>
-                            </div>
+                                </MDBBtn>
+                            </MDBCol>
 
-                        </div>
+                        </MDBRow>
 
 
                     </Form>
                 )}
 
                 </Formik>
-            </div>
+            </MDBContainer>
         )
     }
     
 }
 
-export default Search;
+export default withRouter(Search);

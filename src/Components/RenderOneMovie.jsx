@@ -14,6 +14,23 @@ class RenderOneMovie extends Component {
         }
     }
 
+
+    extractParamsUrl = (get) => {
+        get = get.split('&');
+
+        console.log(get)
+        var result = {};
+    
+        get.forEach(function(el){
+            var param = el.split('=');
+            param[0] = param[0].replace('?', '');
+            result[param[0]] = param[1];
+        });
+    
+        return result;
+    }
+
+
     componentDidMount() {
         ApiMovie.get('discover/movie')
             .then(response => {
@@ -26,6 +43,10 @@ class RenderOneMovie extends Component {
     }
 
     render() {
+
+        let get = this.props.location.search;
+
+        console.log(this.extractParamsUrl(get));
 
         return (
 
