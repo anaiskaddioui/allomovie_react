@@ -68,8 +68,8 @@ class AppMovie extends Component {
                                             <div className="row">
                                 
                                                 <div className="card-body" style={{ height: 700 }} > 
-                                                    <div className="col-md-4">
-                                                        <Image image = {movie.poster_path}/>
+                                                    <div className="col-md-4 m-auto d-flex justify-content-center">
+                                                        <Image image = {movie.poster_path} width= "250"/>
                                                     </div>
                                             
                                                     <Card id = {movie.id}

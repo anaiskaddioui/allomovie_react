@@ -29,7 +29,7 @@ class Search extends Component {
         super(props);
         this.state = {
             movies : [],
-            first: ''
+            renderOneMovie: false
         }
     }
 
@@ -44,7 +44,12 @@ class Search extends Component {
             })
     }
 
-    submit = (values) => {
+    handleChange = (e) => {
+        console.log(e.target.value);
+    }
+
+    /*submit = (values) => {
+
         const query = '?' + Object.keys(values)
             .map( key => key + '=' + values[key] + '&')
             .join('');
@@ -53,13 +58,29 @@ class Search extends Component {
             .then(response => {
 
                 this.setState({
-                    movies : response.data.results
+                    movie : response.data.results
                 })})
             
             . catch( err => console.log(err));
         
-
+        console.log(this.state.movie);
         console.log(query);
+
+        
+    }*/
+
+    handleSubmit = () => {
+
+        let titleChoice = document.querySelector('#titleChoice');
+
+        this.state.movies.map((movie) => (
+            titleChoice.value === movie.title && console.log('Le film ' + movie.title + ' existe dans la base')
+        ))
+
+        this.setState({
+            renderOneMovie: true
+        })
+
     }
 
     
@@ -73,14 +94,14 @@ class Search extends Component {
             <div className="form">
 
                 <Formik
-                    initialValues={ { query: '', language: 'fr-FR' } }  
+                    initialValues={ initialValues }  
                     onSubmit={this.submit}
                     validationSchema = {validationSchema}
                 >
 
 
-                    {({ handleSubmit, handleChange, handleBlur, isSubmitting }) => (
-                    <Form className="shadow container-fluid" onSubmit={ this.submit }>
+                    {({ handleSubmit, handleChange, handleBlur, isSubmitting, values }) => (
+                    <Form className="shadow container-fluid" onSubmit={ this.handleSubmit }>
 
 
                         <div className="row p-0">
@@ -95,8 +116,9 @@ class Search extends Component {
                                         placeholder="Search..."
                                         aria-label="Search"
                                         style={{ color: 'whitesmoke' }}
-                                        //onChange = { handleChange } 
-                                        //onBlur = { handleBlur }
+                                        onChange = { this.handleChange } 
+                                        id = 'titleChoice'
+                                        
                                         />
 
                                     <datalist id="movies"> 
@@ -130,7 +152,7 @@ class Search extends Component {
                                 <button 
                                     type="submit" 
                                     className="btn btn-primary w-100 mt-3"
-                                    disabled = { isSubmitting }
+                                    //disabled = { isSubmitting }
                                 >
                                     Submit
                                 </button>
