@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardTitle, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
+import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import React, { Component } from 'react';
 import ApiMovie from './../api-back/ApiMovie';
 import Image from './Image';
@@ -10,26 +10,10 @@ class RenderOneMovie extends Component {
         super(props);
         this.state = {
             movies : [],
-            title : 'Thunder Force'
+            urlComing : document.location.href,
+            title : ''
         }
     }
-
-
-    extractParamsUrl = (get) => {
-        get = get.split('&');
-
-        console.log(get)
-        var result = {};
-    
-        get.forEach(function(el){
-            var param = el.split('=');
-            param[0] = param[0].replace('?', '');
-            result[param[0]] = param[1];
-        });
-    
-        return result;
-    }
-
 
     componentDidMount() {
         ApiMovie.get('discover/movie')
@@ -37,24 +21,31 @@ class RenderOneMovie extends Component {
                 this.setState({ 
 
                     movies: response.data.results
-                    
                 });               
             })
+        this.getTitle();
     }
+      
+    getTitle = () => {
+
+        this.setState({
+            urlComing : this.state.urlComing.replace(/\/$/, ""),
+            title: this.state.urlComing.substring (this.state.urlComing.lastIndexOf( "/" ) + 1 ).replace(/\/$/, "").replaceAll('%20', ' ')
+        })
+        
+    }
+    
 
     render() {
 
-        let get = this.props.location.search;
-
-        console.log(this.extractParamsUrl(get));
-
+        
         return (
 
             <MDBContainer >
-                {this.state.movies.map((movie) => (
+                {this.state.movies.map((movie, key) => (
                     this.state.title === movie.title && 
 
-                    <div className="mx-auto my-5 text-white">  
+                    <div className="mx-auto my-5 text-white" key={key}>  
                                            
                       
                         <h1 className="my-5 font-bold">

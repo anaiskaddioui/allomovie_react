@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../presentation/Home';
 import Card from './../Components/Card';
@@ -7,27 +7,29 @@ import Favoris from './../Components/Favoris';
 import AppMovie from './../Components/AppMovie';
 import DetailMovie from './../Components/DetailMovie';
 import RenderOneMovie from './../Components/RenderOneMovie';
+import { createBrowserHistory } from "history";
 
-class Routes extends Component {
 
-    render() {
+const customHistory = createBrowserHistory();
+
+const Routes = () => {
 
         return (
             <div>
-                <Switch>
+                <Switch history={ customHistory }>
                     <Route exact path='/' component= { Home } />
                     <Route path='/home' component= { Home } />
                     <Route path='/card' component= { Card } />
                     <Route path='/favoris' component= { Favoris } />
                     <Route path='/detail' component= { DetailMovie } />
                     <Route path='/movie/:id?' component= { AppMovie }/>
-                    <Route path='/renderone/:id?' component={RenderOneMovie} />
+                    <Route exact path='/renderone/:title' component={RenderOneMovie} />
                     <Route component= { Error404 } />
                 </Switch>
                 
             </div>
         )
-    }
+  
 }
 
 export default Routes;

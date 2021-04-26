@@ -1,4 +1,4 @@
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { ErrorMessage, Form, Formik } from 'formik';
 import React, { Component } from 'react';
@@ -8,11 +8,10 @@ import ApiMovie from './../../api-back/ApiMovie';
 import { MDBBtn, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 
 
-
 const initialValues = {
 
     search: '',
-    language: '',
+    language: 'en',
     keyAPI : ''
 }
 
@@ -31,11 +30,10 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies : [],
-            renderOneMovie: false,
+            movies : []
         }
-        //this.routeChange = this.routeChange.bind(this);
 
+        //this.routeChange = this.routeChange.bind(this)
     }
 
     componentDidMount() {
@@ -49,51 +47,29 @@ class Search extends Component {
             })
     }
 
-    handleChange = (e) => {
+    /*handleChange = (e) => {
         console.log(e.target.value);
-    }
-
-    /*submit = (values) => {
-
-        const query = '?' + Object.keys(values)
-            .map( key => key + '=' + values[key] + '&')
-            .join('');
-       
-        ApiMovie.get('/search/movie' + query)
-            .then(response => {
-
-                this.setState({
-                    movie : response.data.results
-                })})
-            
-            . catch( err => console.log(err));
-        
-        console.log(this.state.movie);
-        console.log(query);
-
-        
     }*/
 
-    handleSubmit = () => {
+    
 
+    handleSubmit = (e) => {
+
+        e.preventDefault()
+        
         let titleChoice = document.querySelector('#titleChoice');
 
         this.state.movies.map((movie) => (
-            titleChoice.value === movie.title && console.log(movie.id)
+            titleChoice.value === movie.title && 
+            this.routeChange(movie.title)
         ))
-
-        this.setState({
-            renderOneMovie: true
-        })
-
-        this.routeChange();
-
     }
 
-    routeChange = () => {
-        let path = './../renderone';
-        this.props.history.push(path);
-      }
+    routeChange = (title) => {
+      
+        this.props.history.push('/renderone/' + title);
+        console.log(title);
+    }
 
     render() {
 
@@ -113,7 +89,6 @@ class Search extends Component {
                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, values }) => (
                     <Form className="shadow" onSubmit={ this.handleSubmit }>
 
-
                         <MDBRow className="justify-content-center align-items-center">
                             <MDBCol className="col-4 w-100">
 
@@ -126,12 +101,14 @@ class Search extends Component {
                                         <input
                                             list="movies" 
                                             className="form-control w-100 custom-select" 
-                                            type="text" 
+                                            type="search" 
+                                            name="search"
                                             placeholder="Search..."
                                             aria-label="Search"
                                             style={{ color: 'whitesmoke' }}
-                                            onChange = { this.handleChange } 
+                                            onChange = { handleChange } 
                                             id = 'titleChoice'
+                                            value={values.search}
                                             
                                             />
 
@@ -153,11 +130,11 @@ class Search extends Component {
                             <MDBCol className="col-4 w-100" >
 
                                 <select className="browser-default custom-select w-100" 
-                                        //onChange = { handleChange } 
-                                        //onBlur = { handleBlur }
+                                        onChange = { handleChange } 
+                                        onBlur = { handleBlur }
                                 >
-                                    <option defaultValue value="English">English</option>
-                                    <option value="Français">Français</option>
+                                    <option defaultValue value="en">English</option>
+                                    <option value="fr">Français</option>
                                 </select>
                         
                                 <ErrorMessage component="small" name="language" className="text-danger" />
@@ -167,7 +144,7 @@ class Search extends Component {
                                 <MDBBtn 
                                     type="submit" 
                                     className="btn btn-primary w-100"
-                                    //disabled = { isSubmitting }
+                                    disabled = { isSubmitting }
                                 >
                                     Submit
                                 </MDBBtn>
