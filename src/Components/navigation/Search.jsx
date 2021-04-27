@@ -142,7 +142,7 @@ class Search extends Component {
                             <MDBCol className="col-4">
                                 <MDBBtn 
                                     type="submit" 
-                                    className="btn btn-primary w-100"
+                                    className="btn btn-primary w-100 font-weight-bold"
                                     disabled = { isSubmitting }
                                 >
                                     Submit
