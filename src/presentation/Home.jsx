@@ -1,6 +1,6 @@
 import { MDBContainer } from 'mdbreact';
 import React, { Component } from 'react';
-import AppMovie from '../Components/AppMovie';
+import AppMovie from '../components/AppMovie';
 
 
 class Home extends Component {

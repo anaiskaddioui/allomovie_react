@@ -14,7 +14,7 @@ class AppRouting  extends Component {
         <BrowserRouter>
         
             <Navbar />
-            <Search />
+            
             <Routes />
             
         </BrowserRouter>

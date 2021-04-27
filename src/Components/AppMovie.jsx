@@ -1,8 +1,9 @@
 import { MDBContainer, MDBRow } from 'mdbreact';
 import React, { Component } from 'react';
-import ApiMovie from '../api-back/ApiMovie';
+import ApiMovie from './../api-back/ApiMovie';
 import Card from './Card';
 import Image from './Image';
+import Search from './navigation/Search';
 
 
 
@@ -56,6 +57,8 @@ class AppMovie extends Component {
 
                 
                 <MDBContainer>
+
+                    <Search />
                 
                         <MDBRow className="row">
 

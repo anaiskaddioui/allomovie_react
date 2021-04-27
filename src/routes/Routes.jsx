@@ -1,13 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from '../presentation/Home';
-import Card from './../Components/Card';
-import Error404 from '../error-404/Error404';
-import Favoris from './../Components/Favoris';
-import AppMovie from './../Components/AppMovie';
-import DetailMovie from './../Components/DetailMovie';
-import RenderOneMovie from './../Components/RenderOneMovie';
+
 import { createBrowserHistory } from "history";
+import Home from './../presentation/Home';
+import Card from './../components/Card';
+import Favoris from './../components/Favoris';
+import DetailMovie from './../components/DetailMovie';
+import AppMovie from './../components/AppMovie';
+import RenderOneMovie from './../components/RenderOneMovie';
+import Error404 from './../error-404/Error404';
 
 
 const customHistory = createBrowserHistory();

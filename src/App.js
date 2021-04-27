@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import AppRouting from './Components/AppRouting';
+import AppRouting from './components/AppRouting';
 
 class App  extends Component {
 

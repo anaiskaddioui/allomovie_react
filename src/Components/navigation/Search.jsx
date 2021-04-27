@@ -1,7 +1,6 @@
-import { withRouter } from 'react-router-dom';
-
-import { ErrorMessage, Form, Formik } from 'formik';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { ErrorMessage, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import './../../assets/Components.css';
 import ApiMovie from './../../api-back/ApiMovie';

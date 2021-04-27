@@ -1,4 +1,4 @@
-import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
+import { MDBBtn, MDBCol, MDBContainer, MDBRow, MDBIcon } from 'mdbreact';
 import React, { Component } from 'react';
 import ApiMovie from './../api-back/ApiMovie';
 import Image from './Image';
@@ -34,6 +34,11 @@ class RenderOneMovie extends Component {
         })
         
     }
+
+    handleClick = () => {
+
+        this.props.history.push('/')
+    }
     
 
     render() {
@@ -42,6 +47,11 @@ class RenderOneMovie extends Component {
         return (
 
             <MDBContainer >
+
+                <MDBBtn onClick={ this.handleClick } className="font-weight-bold mt-5">
+                    <MDBIcon icon="angle-double-left" className="mr-2" />
+                    Go back
+                </MDBBtn>
                 {this.state.movies.map((movie, key) => (
                     this.state.title === movie.title && 
 
