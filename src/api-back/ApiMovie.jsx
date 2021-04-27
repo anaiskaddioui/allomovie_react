@@ -15,12 +15,6 @@ ApiMovie.interceptors.request.use( req => {
 export default ApiMovie;
 
 
-export const movieList = (movie) => ({ 
-    img: 'https://image.tmdb.org/t/p/w500' + movie.poster_path,
-    title: movie.title,
-    details: movie.release_date + ' | ' + movie.vote_average + '/10 (' +  movie.vote_count + ')',
-    description: movie.overview
-});
 
 
 

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import ApiMovie from './../api-back/ApiMovie';
 import Card from './Card';
 import Image from './Image';
-import Search from './navigation/Search';
+import SearchBar from './navigation/SearchBar';
+import RenderOneMovie from './RenderOneMovie';
 
 
 
@@ -13,7 +14,8 @@ class AppMovie extends Component {
         super(props);
         this.state = {
             movies: [],
-            id: '',
+            movieSelected : false,
+            title : '',
             isLoaded: false,
             values: { query: '', language: 'fr-FR' }
         }
@@ -40,10 +42,19 @@ class AppMovie extends Component {
 
     } */  
 
-    handleClick = async (id) => {
-                 
-        ApiMovie.get('movie/' + {id})
-        .then(response => {console.log(response)});
+    handleClick = (bool) => {
+
+        this.setState({
+            movieSelected: bool
+        })
+    }
+
+    takeData = (values) => {
+        //console.log('Valeurs communiquées : ' + values);
+        this.setState({
+            movieSelected: true,
+            title: values
+        })
     }
 
 
@@ -58,11 +69,14 @@ class AppMovie extends Component {
                 
                 <MDBContainer>
 
-                    <Search />
-                
-                        <MDBRow className="row">
+                    <div className="mt-3 mb-5">
+                        <SearchBar movies = { this.state.movies } takeData={this.takeData} />
+                    </div>
 
-                                            
+                    { !this.state.movieSelected && (
+                
+                        <MDBRow className="row"> 
+
                             {this.state.movies.map((movie, key) =>(
                         
                                 <div className="col" key={ key }>
@@ -96,6 +110,12 @@ class AppMovie extends Component {
                             ))}  
                                         
                         </MDBRow>
+                    )}
+
+                    { this.state.movieSelected && (
+
+                        <RenderOneMovie title = { this.state.title } movies = {this.state.movies} handleClick = { this.handleClick } />
+                    )}
                     
                 </MDBContainer>
             
