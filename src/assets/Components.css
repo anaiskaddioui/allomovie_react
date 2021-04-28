@@ -35,3 +35,23 @@ input[list], datalist option
 {
   background: black;
 }
+
+
+@media all and (max-width : 992px) {
+
+    .blocOverview {
+
+        max-width: 100%;
+        position: absolute;
+        z-index: 9999;
+        top: 0em;
+        left: 0%;
+    }
+
+    .inputSearch {
+
+        width: 50% !important;
+        margin-top: 5%;
+    }
+
+}

@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { useFormik } from 'formik';
 import { MDBBtn, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
+import './../../assets/Components.css';
 
 
 function SearchBar (props) {
@@ -11,17 +12,17 @@ function SearchBar (props) {
             language: 'en'
         },
         onSubmit: values => {
-            console.log('Form data', values);
+            //console.log('Form data', values);
         }
     })    
 
-    console.log('Form values', search.values);
+    //console.log('Form values', search.values);
 
 
     return (
 
         <MDBContainer className="container-fluid m-auto">
-            <form action="" className="form" onSubmit={search.handleSubmit}>
+            <form action="" className="form m-auto" onSubmit={search.handleSubmit}>
 
                 <MDBRow className="justify-content-center align-items-center">
 
@@ -64,7 +65,7 @@ function SearchBar (props) {
                         <select 
                             name="language" 
                             id="language" 
-                            className="browser-default custom-select w-100" 
+                            className="browser-default custom-select w-100 inputSearch" 
                             onChange={ search.handleChange }
                             onBlur={ search.handleBlur }
                         > 
@@ -76,7 +77,7 @@ function SearchBar (props) {
                     <MDBCol sm="12" className="col-lg-4">
                         <MDBBtn 
                             type="submit" 
-                            className="btn btn-primary w-100 font-weight-bold"
+                            className="btn btn-primary w-100 font-weight-bold inputSearch"
                             onClick={() => props.takeData(search.values.searchTitle)}
                         >
                             Submit

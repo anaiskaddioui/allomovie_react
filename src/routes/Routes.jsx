@@ -1,6 +1,4 @@
-import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import { createBrowserHistory } from "history";
 import Home from './../presentation/Home';
 import Card from './../components/Card';
@@ -23,7 +21,7 @@ const Routes = () => {
                     <Route path='/card' component= { Card } />
                     <Route path='/favoris' component= { Favoris } />
                     <Route path='/detail' component= { DetailMovie } />
-                    <Route path='/movie/:id?' component= { AppMovie }/>
+                    <Route path='/movie/:id?' component= { AppMovie } />
                     <Route exact path='/renderone/:title' component={RenderOneMovie} />
                     <Route component= { Error404 } />
                 </Switch>

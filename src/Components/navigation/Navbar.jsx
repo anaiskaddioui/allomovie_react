@@ -11,7 +11,7 @@ class Navbar extends Component {
       
         <nav className="navbar navbar-expand-lg" >
           <div className="container-fluid fw-bold">
-            <NavLink to="/home" className="navbar-brand nav-link">AlloMovie</NavLink>
+            <NavLink to="/home" className="navbar-brand nav-link" >AlloMovie</NavLink>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>

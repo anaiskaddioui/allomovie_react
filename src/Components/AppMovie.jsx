@@ -52,7 +52,8 @@ class AppMovie extends Component {
     takeData = (values) => {
         //console.log('Valeurs communiquées : ' + values);
         this.setState({
-            movieSelected: true,
+            movieSelected: true, 
+            displayList: false,
             title: values
         })
     }
@@ -73,7 +74,7 @@ class AppMovie extends Component {
                         <SearchBar movies = { this.state.movies } takeData={this.takeData} />
                     </div>
 
-                    { !this.state.movieSelected && (
+                    { (!this.state.movieSelected) && (
                 
                         <MDBRow className="row"> 
 
@@ -112,9 +113,9 @@ class AppMovie extends Component {
                         </MDBRow>
                     )}
 
-                    { this.state.movieSelected && (
+                    { (this.state.movieSelected) && (
 
-                        <RenderOneMovie title = { this.state.title } movies = {this.state.movies} handleClick = { this.handleClick } />
+                        <RenderOneMovie title = { this.state.title } movies = { this.state.movies } handleClick = { this.handleClick } />
                     )}
                     
                 </MDBContainer>

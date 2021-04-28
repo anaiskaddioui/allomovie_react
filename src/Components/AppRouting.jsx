@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from './navigation/Navbar';
 import Routes from './../routes/Routes';
 import React, { Component } from 'react';
+import Navbar from './navigation/Navbar';
 
 
 class AppRouting  extends Component {
@@ -11,10 +11,10 @@ class AppRouting  extends Component {
     return (
       <div>
         <BrowserRouter>
-        
-            <Navbar />
-            
-            <Routes />
+
+          <Navbar />
+                    
+          <Routes />
             
         </BrowserRouter>
       </div>
