@@ -7,11 +7,12 @@ import DetailMovie from './../components/DetailMovie';
 import AppMovie from './../components/AppMovie';
 import RenderOneMovie from './../components/RenderOneMovie';
 import Error404 from './../error-404/Error404';
+import { useState } from 'react';
 
 
 const customHistory = createBrowserHistory();
 
-const Routes = () => {
+const Routes = (props) => {
 
         return (
             <div>

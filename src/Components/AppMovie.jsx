@@ -53,11 +53,17 @@ class AppMovie extends Component {
         //console.log('Valeurs communiquées : ' + values);
         this.setState({
             movieSelected: true, 
-            displayList: false,
             title: values
         })
     }
 
+    goMoviePage = (values) => {
+
+        this.setState({
+            movieSelected: true,
+            title: values
+        })
+    }
 
     render() {
 
@@ -82,7 +88,7 @@ class AppMovie extends Component {
                         
                                 <div className="col" key={ key }>
                                     <div className="row my-3">
-                                        <div className="card m-3 m-auto" style= {{ width: 300 }}>
+                                        <div className="card m-3 m-auto pb-5" style= {{ width: 300 }}>
                                             <div className="row">
                                 
                                                 <div className="card-body" style={{ height: 700 }} > 
@@ -97,9 +103,9 @@ class AppMovie extends Component {
                                                         vote_count = {movie.vote_count} 
                                                         overview = {movie.overview}
                                                         movies = {this.state.movies}
-                                                        //handleClick={this.handleClick(movie.id)}
+                                                        goMoviePage = {this.goMoviePage}
                                                     />
-                                                
+                                                    
                                                 </div>
                                             </div>
                                         </div>
