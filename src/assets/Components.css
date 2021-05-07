@@ -47,6 +47,7 @@ input[list], datalist option {
     color: #ffdc0f;
 }
 
+
 .rating {
     display: flex;
     flex-direction: column;

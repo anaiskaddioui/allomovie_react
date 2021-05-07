@@ -1,6 +1,15 @@
 import { MDBBtn, MDBCol, MDBContainer, MDBRow, MDBIcon } from 'mdbreact';
 import React, { Component } from 'react';
 import Image from './Image';
+import './../assets/Components.css';
+
+
+const stars = [];
+
+for (let i=0; i<=9; i++) {
+
+    stars.push(i);
+}
 
 
 class RenderOneMovie extends Component {
@@ -43,6 +52,13 @@ class RenderOneMovie extends Component {
                                         Date : {movie.release_date}
                                     </MDBCol>
                                     <MDBCol className="my-5">
+                                        <div className="rating">
+                                            <div className="stars">
+                                                {stars.map((index, note) => (
+                                                    <i key={index} className= {Math.round(movie.vote_average) > note ? "fa fa-star gold" : "fa fa-star text-light" }></i>
+                                                ))}
+                                            </div>
+                                        </div>
                                         Note : {movie.vote_average} / 10
                                     </MDBCol>
                                 </MDBRow>

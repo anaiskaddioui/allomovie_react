@@ -9,7 +9,7 @@ class Home extends Component {
         return (
             <div className="container-fluid m-0 p-0">
                 
-                <AppMovie home = {this.props.home} />                
+                <AppMovie />                
                                 
             </div>
         )

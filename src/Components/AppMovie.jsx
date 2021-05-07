@@ -17,7 +17,8 @@ class AppMovie extends Component {
             movieSelected : false,
             title : '',
             isLoaded: false,
-            values: { query: '', language: 'fr-FR' }
+            values: { query: '', language: 'fr-FR' },
+            homeReset: this.props.homeReset
         }
     }
 

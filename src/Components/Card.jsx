@@ -4,6 +4,12 @@ import './../assets/Components.css';
 import DetailMovie from './DetailMovie';
 
 
+const stars = [];
+
+for (let i=0; i<=9; i++) {
+
+    stars.push(i);
+}
 
 class Card extends Component {
 
@@ -57,16 +63,9 @@ class Card extends Component {
                 <p className="card-text"><b>Date : </b>{this.props.release_date}</p>
                 <div className="rating">
                     <div className="stars">
-                        <i className= {this.props.vote_average >= 1 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 1.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 2.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 3.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 4.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 5.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 6.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 7.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 8.8 ? "fa fa-star gold" : "fa fa-star" }></i>
-                        <i className= {this.props.vote_average >= 9.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        {stars.map((index, note) => (
+                            <i key={index} className= {Math.round(this.props.vote_average) > note ? "fa fa-star gold" : "fa fa-star" }></i>
+                        ))}
                     </div>
                 </div>
                 <p className="card-text"><b>Note : </b>{this.props.vote_average}/10</p>
