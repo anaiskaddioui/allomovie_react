@@ -16,10 +16,11 @@
 
 .blocOverview {
 
-    width: 300%;
+    width: 250%;
     position: absolute;
-    top: -15em;
-    left: -8em;
+    top: -50%;
+    left: -50%;
+    
     background-color: rgba(0, 0, 0, 0.91);
     color: whitesmoke;
     border : 5px #30cfc0 solid !important;
@@ -31,9 +32,42 @@
     margin-bottom : 1em;
 }
 
-input[list], datalist option
-{
-  background: black;
+input[list], datalist option {
+  
+    background: black;
+}
+
+.fa-star {
+	color: black;
+	/*cursor: pointer;*/
+	padding: 0.0625rem;
+}
+    
+.fa-star.gold {
+    color: #ffdc0f;
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars {
+    display: inline-flex;
+    justify-content: center;
+    font-size: 1em;
+}
+
+a { 
+
+    font-weight: 600; 
+    transition: all 0.8s cubic-bezier(.14,1.36,.5,.88); 
+    display: inline-block; 
+}
+
+a:hover { 
+    transform: scale(1.1);
 }
 
 

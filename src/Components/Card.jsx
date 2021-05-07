@@ -41,7 +41,7 @@ class Card extends Component {
     
     
     render() {
-        
+         
 
         return (
 
@@ -54,8 +54,22 @@ class Card extends Component {
                     <h5 className="card-title py-2" style= {{ width: 200, fontWeight: "bold" }}>{this.props.title}</h5>
                 </div>
 
-                <p className="card-text"><b>Date de sortie : </b>{this.props.release_date}</p>
-                <p className="card-text"><b>Note des spectateurs : </b>{this.props.vote_average}/10</p>
+                <p className="card-text"><b>Date : </b>{this.props.release_date}</p>
+                <div className="rating">
+                    <div className="stars">
+                        <i className= {this.props.vote_average >= 1 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 1.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 2.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 3.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 4.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 5.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 6.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 7.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 8.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                        <i className= {this.props.vote_average >= 9.8 ? "fa fa-star gold" : "fa fa-star" }></i>
+                    </div>
+                </div>
+                <p className="card-text"><b>Note : </b>{this.props.vote_average}/10</p>
                 <p className="card-text"><small className="text-muted">({this.props.vote_count} votes)</small></p>
                 
                 <div className="m-auto">
@@ -83,7 +97,7 @@ class Card extends Component {
 
             {this.state.showOverview && (
 
-                <MDBCard className="blocOverview" style={{ zIndex: this.state.zIndex }} onClick= { this.fixZindex }  >
+                <MDBCard className="blocOverview" style={{ zIndex: this.state.zIndex, margin: 'auto' }} onClick= { this.fixZindex }  >
                     <MDBIcon icon="window-close" style={{ position: 'absolute', top: 10, right: 10, cursor: 'pointer' }} onClick={ this.hideContent } title='Close'/>
                     <DetailMovie 
                         title = {this.props.title}
